@@ -1,0 +1,34 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "strategy-grid",
+  "description": "A portable strategy kernel: judge decisions against named conditions, on your own subagents.",
+  "owner": {
+    "name": "Matthew Bryan",
+    "url": "https://github.com/commahawk"
+  },
+  "plugins": [
+    {
+      "name": "strategy-grid",
+      "source": "./",
+      "description": "Judge candidate options against named conditions as an independent M×N grid, scored in your own blind subagents. Every pairing gets three relations — push, grip, stake — then the grid is read by rows to rank the options and by columns to score the set as a strategy. Works on a repo refactor question or a business plan; no server and no API key.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Matthew Bryan",
+        "url": "https://github.com/commahawk"
+      },
+      "homepage": "https://github.com/commahawk/strategy-grid",
+      "repository": "https://github.com/commahawk/strategy-grid.git",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": [
+        "strategy",
+        "decision",
+        "evaluation",
+        "rubric",
+        "judge",
+        "refactoring",
+        "planning"
+      ]
+    }
+  ]
+}
