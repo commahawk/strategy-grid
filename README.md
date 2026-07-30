@@ -104,6 +104,28 @@ leaked from the cell next door would just be an average wearing a number.
 
 The trade is that the rubric is re-sent per cell, so keep M and N tight.
 
+## Composition — one motion, used again
+
+The skill's motion is more general than one report: it **materializes a relation
+between two lists as a judged matrix**, and every run writes that matrix to
+`.strategy-grid/runs/<slug>.json`. Ranking and the strategy score are arithmetic
+applied afterward — so complex goals are chains of the same motion with plain
+computation between:
+
+| goal | chain |
+|---|---|
+| refine a strategy | grid → edit what the objections point at → grid → **diff the run files** = what moved |
+| wide funnel | coarse pass over many options → full grid on the survivors |
+| zoom | grid the strategies → take the winner → grid its first-actions against the same conditions |
+| sensitivity | grid once → recompute the ranking with each condition deleted — **no new inference** |
+
+Two rules keep chains cheap and honest. Between motions, *compute* — never
+re-judge what arithmetic over an existing run file can answer, and inside a
+refine loop only cells whose text changed get new judgments. And the rubric
+judges one relation — directed fact → action; a chain step needing a different
+relation (say, symmetric affinity within one list) needs its own calibrated
+rubric, not an improvised one.
+
 ## What has been measured
 
 Three grids, 320 blind judgments, judged by a small model with a decisive

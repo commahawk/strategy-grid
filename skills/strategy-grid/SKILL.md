@@ -278,13 +278,75 @@ These are not footnotes; put them in the output.
    the primary result and treat the push ranking as secondary.** Say which kind
    of grid this is in the report.
 
-## 9. Keep the corpus
+## 9. Keep the corpus — and the run artifact
 
-Append every returned verdict, with its full `(condition, option)` inputs, tier,
-and the run's aggregates, to `.strategy-grid/traces.jsonl` in the working directory —
-one JSON object per line. The subagents are ephemeral; this is the only durable
-record. It costs nothing and turns repeated use into a labeled corpus the caller
+Two files, two purposes:
+
+```
+.strategy-grid/
+  traces.jsonl        append-only corpus: every verdict ever, with its inputs
+  runs/<slug>.json    one file per run: the computable matrix
+```
+
+**traces.jsonl** — append every returned verdict, with its full
+`(condition, option)` inputs, tier, and the run's aggregates, one JSON object per
+line. The subagents are ephemeral; this is the durable labeled corpus the caller
 owns.
+
+**runs/\<slug\>.json** — the matrix as a computable artifact, because prose
+cannot be piped into a second motion. Pick a short slug (date + a word), say it
+in the report, and write:
+
+```
+{ "slug": "...", "context": "...",
+  "conditions": [ {name, what_is_true, pivotal} ],
+  "options":    [ {name, we_will, how} ],
+  "cells":      [ [ {push, grip, stake, confidence, tier} ] ],   // [i][j] = condition i × option j
+  "aggregates": { "S", "best_single",
+                  "options": [ {name, push, changes, depends_on} ],
+                  "unanswered": [...], "carriers": {...} } }
+```
+
+This file is the plugin's output contract for composition. Treat its shape as
+API: chains built on it break if it drifts.
+
+## 10. One motion, used again
+
+Everything above is a single motion: **materialize a relation between two lists
+as a judged matrix**. Ranking the options and scoring the set are arithmetic
+applied to that matrix afterward — rows, columns, min, max, counts. Complex
+goals are chains of this one motion with plain computation between.
+
+The rule that makes chains affordable: **between motions, compute — never
+re-judge what arithmetic over an existing run file can answer.**
+
+Recipes, all using this rubric as-is:
+
+- **Refine** — run the grid; edit the options the worst-pair objections point
+  at; run again with a new slug; then diff the two run files: per-option push
+  deltas, rank moves, cells that changed sign, ΔS. Report the diff as
+  *what moved*, attributed to the edits.
+- **Incremental re-judge** — inside a refine loop, a pairing whose two texts are
+  unchanged keeps its verdict: copy it forward from the previous run file
+  (keeping its recorded tier) and spawn judges only for cells whose condition or
+  option text actually changed. An edit to one option re-judges one column, not
+  the grid.
+- **Funnel** — with many candidate options, run a coarse pass first (screen
+  aggressively, or judge a short-form grid), keep the survivors, and run the
+  full grid on those. Confirm the bill for each stage separately.
+- **Zoom** — after a winner emerges, grid its `first_actions` or sub-decisions
+  as a new option list against the *same* conditions. Same rubric: the relation
+  is still fact → action, just one level down.
+- **Sensitivity** — no new judging at all: recompute S and the ranking from the
+  run file with condition *i* deleted, for each *i* in turn. Report which
+  conditions carry the ranking — if deleting one condition reorders the top,
+  say so; that condition deserves the caller's scrutiny more than any score.
+
+One boundary: this rubric judges a directed fact → action relation. A chain
+step needing a *different* relation — e.g. symmetric affinity between items of
+the same list — needs its own rubric, and an uncalibrated rubric is how this
+plugin got its worst measured result. Do not improvise one; say the relation
+isn't supported yet.
 
 ## Cost
 
