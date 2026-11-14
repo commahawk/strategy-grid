@@ -11,6 +11,11 @@ ontology is *facts you don't control* and *things you might do*.
 There is no server and no API key. The schema discipline and the rubric travel in
 the plugin; the inference runs in your own subagents, on your own spend.
 
+The plugin ships a second skill, **strategy-comms**, for the step after the
+grid: telling whoever decides. It writes a run up as a recommendation, and it
+reworks any draft you already have so a senior reader can act on it. See
+[strategy-comms](#strategy-comms-tell-whoever-decides) below.
+
 ## Install
 
 ```
@@ -118,6 +123,7 @@ computation between:
 | wide funnel | coarse pass over many options → full grid on the survivors |
 | zoom | grid the strategies → take the winner → grid its first-actions against the same conditions |
 | sensitivity | grid once → recompute the ranking with each condition deleted — **no new inference** |
+| write it up | grid → **strategy-comms** on the run file: your pick, the case against it, a marked blank for cost — **no new judging** |
 
 Two rules keep chains cheap and honest. Between motions, *compute* — never
 re-judge what arithmetic over an existing run file can answer, and inside a
@@ -125,6 +131,33 @@ refine loop only cells whose text changed get new judgments. And the rubric
 judges one relation — directed fact → action; a chain step needing a different
 relation (say, symmetric affinity within one list) needs its own calibrated
 rubric, not an improvised one.
+
+## strategy-comms: tell whoever decides
+
+A grid says which options the conditions favour. Someone still has to read
+that and decide, and they have not seen the grid. `strategy-comms` writes it
+up for them:
+
+```
+/strategy-grid:strategy-comms .strategy-grid/runs/<slug>.json
+```
+
+or *"write this run up for our COO"*. It leads with your pick, because the
+grid ranks and does not choose, and takes the case against that pick from the
+run and its traces. Your conditions go in as your facts, unchanged. Scores go
+in as a model's judgment, never as findings. Cost gets a marked blank for each
+option, because the grid never judged it (limit 3 below).
+
+It also works with no grid at all, on any draft you have already written:
+*"make this exec-ready for my VP"*, *"what will my director poke holes in?"*
+It moves the main point and the ask to the opening, keeps facts apart from
+your read of them, puts the biggest risk in a sentence of its own, and adds no
+facts of its own. The sentences that are its synthesis come back listed for
+you to confirm, and where the argument needs something only you can supply it
+leaves a short bracketed placeholder instead of a guess.
+
+Its test record, known limits, examples and sources are in
+[`skills/strategy-comms/README.md`](skills/strategy-comms/README.md).
 
 ## What has been measured
 
@@ -154,6 +187,13 @@ Escalating ~14% of cells — extremes, per-option argmins, per-condition argmaxe
 near-ties, low-confidence — recovers most of that. `cell-judge-pro` runs the
 byte-identical rubric on the same payload, never a review of the cheap verdict.
 
+**strategy-comms has its own, smaller record.** In its latest round, three
+blind judges compared its output with plain Claude's on each of seven inputs.
+All three preferred the skill's on six and called the seventh a tie, mostly by
+slight margins. The judges scored it higher on inventing nothing and lower on
+form. The detail, including how earlier rounds fell short of blind, is in
+[its README](skills/strategy-comms/README.md#what-has-been-measured).
+
 ## Known limits
 
 Printed in the output, not buried here.
@@ -181,9 +221,14 @@ agents/cell-judge.md               small model · effort low · 1 turn · no too
 agents/cell-judge-pro.md           stronger model — identical rubric body
 skills/strategy-grid/SKILL.md      shape → confirm → fan out → verify →
                                    escalate → aggregate → report
+skills/strategy-comms/             the write-up skill: SKILL.md, references,
+                                   test inputs, examples, its own README
 ```
 
-Four markdown files. No dependencies, nothing to build, nothing to run.
+The grid is four markdown files. strategy-comms adds about sixty-five, of which
+Claude reads three (its SKILL.md and two reference files); the rest are its
+README, examples and test inputs. No dependencies, nothing to build, nothing
+to run.
 
 ## License
 
