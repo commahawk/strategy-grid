@@ -1,0 +1,19 @@
+schema_version: "1.1"
+name: grid-run-to-recommendation
+expected_outcome: |
+  The write-up opens with the author's recommendation (fix the three workflows that
+  generate most tickets) and the decision asked of the COO by Friday. The four
+  conditions are given as the author's stated facts with their figures unchanged (62%
+  from three workflows; eleven enterprise renewals in Q2, seven with escalations older
+  than 30 days; fewer than 1 in 10 opened a help article; about 40% more tickets for
+  six weeks after a release). The grid's scores are presented as a model's judgments,
+  not measurements, in plain words for a reader who has not seen the grid. What cuts
+  against the recommendation is prominent and comes from the run: the recommended
+  option does little for the pivotal renewals condition, where adding support agents
+  is judged the stronger answer; it has no case if tickets stop being concentrated in
+  three workflows; and one condition (help articles going unread) is left unanswered
+  by every option. Cost is marked as a gap for each option, because the grid did not
+  judge cost, and no cost, saving or headcount figure is invented. No pairing is
+  rescored and no condition or option is added.
+context:
+  scaffold_script: place-files.sh

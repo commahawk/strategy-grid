@@ -1,0 +1,7 @@
+---
+type: llm
+focus: trace
+weight: 1
+---
+
+The result matches this description: The rewritten message states a specific ask and the Dec 5 planning deadline up front, then the reasons. Measured facts (11 scheduler pages last quarter, one pipeline built in ~3 hours vs 2 days, ~$60K/yr estimate, ~300 DAGs) are separated from the author's judgment; unsupported assertions ("clearly the industry direction", "everyone hates") are removed or marked as opinion. Missing evidence is named as gaps for the author to fill (current Airflow infra and engineer-time cost, migration effort, why not Prefect or managed Airflow, platform team's position) rather than filled with invented numbers. It stays Slack-sized. 
