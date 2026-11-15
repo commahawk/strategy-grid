@@ -288,9 +288,9 @@ Two files, two purposes:
   runs/<slug>.json    one file per run: the computable matrix
 ```
 
-**traces.jsonl** — append every returned verdict, with its full
-`(condition, option)` inputs, tier, and the run's aggregates, one JSON object per
-line. The subagents are ephemeral; this is the durable labeled corpus the caller
+**traces.jsonl** — append every returned verdict as one JSON object per line,
+with `run` (the run's slug), the pairing's full `(condition, option)` inputs,
+the tier, and the run's aggregates. The subagents are ephemeral; this is the durable labeled corpus the caller
 owns.
 
 **runs/\<slug\>.json** — the matrix as a computable artifact, because prose
