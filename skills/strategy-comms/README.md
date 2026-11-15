@@ -28,21 +28,28 @@ drafts the recommendation from the run and its traces and rescores nothing:
   stated as a finding.
 - **The case against comes from the run.** The worst pairing for your pick,
   the conditions it has no case without, any pivotal condition another option
-  answers better, and whatever the set leaves unanswered, with the reasoning
-  taken from `traces.jsonl`.
+  answers better, and whatever the set leaves unanswered. The reasoning is
+  taken from that run's own verdicts in `traces.jsonl`, never from another
+  run that happens to have the same scores.
+- **It says which kind of grid it is.** When the conditions are problems to
+  fix, as in a codebase, it leads with which problems each option is judged to
+  change and gives the push ranking second, because push under-rates a fix. A
+  remedy's zero push or passenger status is not held against it. A negative
+  push still is.
 - **Cost is a marked blank.** The grid never judges cost, so each option gets
   a cost placeholder and no number is made up.
 
 The opening of one such write-up, from a fictional run:
 
-> **Recommendation: fund the fix to the three workflows behind 62% of support tickets**
+> **Q2 support funding: recommend fixing the three workflows behind 62% of last quarter's tickets**
 >
-> I recommend funding the workflow fix for Q2: two engineers for one quarter on invoice export, SSO setup and bulk import, at [cost of two engineers for one quarter]. I'm asking you to approve it on Friday, ahead of adding four support agents or building in-app help. Those three workflows produced 62% of our support tickets last quarter, and a model-judged comparison of the three options favours this one.
+> On Friday you choose which one of three support initiatives to fund for Q2. I recommend fixing the three workflows that generate most of our tickets (invoice export, SSO setup and bulk import): two engineers for one quarter, [cost]. It came out ahead when I had the three options judged against four facts about our support load, with one exception that matters.
 >
-> The main point against it is the Q2 enterprise renewals. Seven of the eleven enterprise accounts renewing in Q2 have open escalations older than 30 days, and on that condition the comparison judged adding agents the better answer and the workflow fix a weak one. [plan for the seven escalated accounts if the workflow fix is funded]
+> The exception is the Q2 renewals. Eleven enterprise accounts renew in Q2 and seven of them have open escalations older than 30 days. The fixes were judged to do little for those seven and adding support agents was judged the better answer to them, so funding the fixes leaves the escalations to be handled another way: [plan for the seven escalations].
 
 The whole memo and the notes that came with it are in
-[`examples/grid-run/`](examples/grid-run/).
+[`examples/grid-run/`](examples/grid-run/). A second write-up, from a codebase
+grid in a refine loop, is in [`examples/problem-grid/`](examples/problem-grid/).
 
 ## On any draft
 
@@ -96,8 +103,8 @@ Plain Claude's version of the same message is in
 [`examples/slack-message/plain-claude.md`](examples/slack-message/plain-claude.md).
 It is better organized and could be sent as it stands. It also adds a decision
 date, a delivery date and a five-item promise the author never made. That is
-the trade this skill makes, and [`examples/`](examples/) has all seven runs
-from the last test round so you can judge it yourself.
+the trade this skill makes, and [`examples/`](examples/) has all eight runs
+from the last two test rounds so you can judge it yourself.
 
 ## The CLAUDE.md block
 
@@ -108,24 +115,38 @@ so a simple question still gets a line or two. The block has not been tested.
 
 ## What has been measured
 
-In the latest round, three blind judges compared the skill's output with plain
-Claude's on each of seven inputs. All three preferred the skill's on six, and
-all three called the seventh a tie.
+In round 5, three blind judges compared the skill's output with plain Claude's
+on each of seven inputs. All three preferred the skill's on six, and all three
+called the seventh a tie. Round 6 re-tested the hand-off from a run on two grid
+inputs, after a review changed it, and all three judges preferred the skill's
+on both.
 
 | Round | Inputs | Judging | Against Claude with no skill |
 |---|---|---|---|
 | 1 to 4 | four drafts in rounds 1 to 3, two new ones in round 4 | one judge, not fully blind | won 13 of 14 |
-| 5, this version | six drafts and one grid run | three judges, blind | preferred on 6, tied on 1 |
+| 5 | six drafts and one grid run | three judges, blind | preferred on 6, tied on 1 |
+| 6, the hand-off as it is now | two grid runs, one of them new | three judges, blind | preferred on both |
 
-**Round 5 is the one to trust, and its margins are small.** Each comparison
-went to three separate Claude instances, which read the two responses under
+**Rounds 5 and 6 are the ones to trust, and round 5's margins are small.** Each
+comparison went to three separate Claude instances, which read the two responses under
 neutral labels, with every file path removed and the order varied. The skill's
 version was preferred in 18 of the 21 judgments and plain Claude's in none. The
 three ties were the note that needed no changes, which both sides returned
 untouched. Fourteen of the 18 margins were "slight". The four "clear" ones were
 the grid write-up (all three judges) and the deck outline (one of three).
 
-**It wins on fidelity and gives up some form.** Across the 21 judgments the
+**Round 6 followed a review of this change.** The review found that a
+write-up could take a remedy's zero push for a mark against it, and could
+quote reasoning from another run that had the same scores. Both rules were
+tightened, and a new input was built to reproduce both failures: a codebase
+grid in a refine loop, with a later run for a different operator in its
+traces. On it, in two separate runs, the skill's memo contained nothing
+from the later run, from a superseded verdict or from the option's earlier
+wording. Plain Claude's memo brought in the earlier wording. Five of round 6's six
+preferences were "clear". The six questions have not changed since round 5, so
+the six drafts were not re-run.
+
+**It wins on fidelity and gives up some form.** Across round 5's 21 judgments the
 skill averaged 4.4 out of 5 on fidelity against 3.0 for plain Claude, and 3.7
 against 4.1 on fit to the medium. No judge listed more invented or hardened
 claims for the skill than for plain Claude: fewer in 16 judgments, the same in
@@ -154,9 +175,9 @@ nearly every gap in its notes and out of the message. It lost three of four
 comparisons to the version before it, because the message the reader saw still
 had the draft's holes.
 
-The judges are models, and seven inputs is a small sample. The inputs are in
+The judges are models, and eight inputs is a small sample. The inputs are in
 [`evals/`](evals/) and every one is fictional. The judges' verdicts are not in
-this repository, and of plain Claude's outputs only two are, kept in
+this repository, and of plain Claude's outputs only three are, kept in
 `examples/` for comparison.
 
 ## Known limits
@@ -168,12 +189,15 @@ this repository, and of plain Claude's outputs only two are, kept in
    rewrite is usually not sendable until you have filled two or three
    placeholders. If you want something to send in the next minute, this is the
    wrong tool.
-3. **A write-up from a run is long.** The example runs to about 1,200 words
-   with a comparison table, and a few grid terms leak through ("band", "at
-   medium confidence").
+3. **A write-up from a run is long.** The two examples run to about 1,000 and
+   1,200 words, a few grid terms leak through ("band", confidence levels), and
+   the set score gets a paragraph even when the reader is choosing one option.
 4. **It never sizes the ask to the evidence for you.** If the draft asks for
    more than its evidence supports, the skill says so in its notes and keeps
    the author's ask in the message.
+5. **On a grid of problems it still files the push ranking under what cuts
+   against the pick.** It goes on to say why that ranking under-rates a fix,
+   but a reader who stops at the opening takes the rank as the main objection.
 
 ## Where the six questions come from
 
@@ -196,6 +220,6 @@ SKILL.md                 the two overriding rules, the six questions,
 references/shapes.md     skeletons by content type
 references/evidence.md   sources and their limits
 claude-md-block.md       the optional always-on block
-evals/                   seven fictional test inputs
-examples/                the seven runs from the last test round
+evals/                   eight fictional test inputs
+examples/                the eight runs from the last two test rounds
 ```

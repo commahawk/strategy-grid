@@ -1,20 +1,18 @@
-Not ready to send: the grid backs your pick overall but judged adding agents the better answer on the one pivotal condition, the enterprise renewals, so first fill in what happens to those seven escalated accounts if the fix is funded.
+Not ready to send yet: it needs your plan for the seven escalated renewals, because the run marks them pivotal and your pick barely touches them, plus a cost for each option.
 
-**Revised** (for your COO, as a decision memo)
-Saved to `recommendation.md`
+**Revised** (for the COO, as a one-page decision memo in your voice)
+Saved to recommendation.md
 
 **Before sending**
-1. `[plan for the seven escalated accounts if the workflow fix is funded]`, second paragraph. This is the first thing the COO will ask and the run has nothing on it. If there is no plan, say so there instead of deleting the line.
-2. Costs: `[cost of two engineers for one quarter]` (opening and table), `[cost of four hires]` and `[cost of in-app help]`. The grid never judges cost, so the memo cannot compare the options on it until you fill these.
-3. How many of the seven escalations sit in the three workflows? The grid named this as what its renewals judgment turns on, and that judgment (+0.25) is the one key pairing scored only at the cheap tier, at medium confidence. If you know the number, add it to the renewals paragraph.
-4. Expect "why not the fix plus some cover for the renewals?" and "which team gives up the two engineers?" The run is silent on both.
-5. The run says Head of Support and VP Product are choosing the proposal together. The memo speaks as "I", so say whether the other one backs this pick.
+1. `[plan for the seven escalations]`, second paragraph. On the grid's read your pick scores +0.25 on the renewals against +0.75 for adding agents, and the renewals are the one fact marked pivotal, so expect "why not agents?" as the first question. If there is no plan, say that there.
+2. `[cost]`, three times. The grid never judges cost, so nothing in the run lets the COO weigh two engineers for a quarter against four hires. Give all three in the same terms.
+3. `[where the seven escalations sit]`, last section. If they sit in the three workflows, the renewals point reads differently, and the run does not say. That +0.25 is also the only score the memo leans on that came from the grid's cheap tier.
+4. The run context says the Head of Support and the VP Product are choosing together. The memo says "I" and is silent on whether the other one agrees.
+5. Not in the run and likely to be asked: which two engineers and what they stop doing, and where the four figures come from.
 
 **Your call**
-1. "Its overall score stays well short of +1 because the other two conditions barely bear on it" is my reading of the arithmetic.
-2. "What the set has and the fix alone lacks is ... what adding agents does for the enterprise renewals" is my reading of the set score (0.53 against 0.31), taken from which option is the best answer to which condition.
-3. The words on each score ("slightly favours", "fights") are mine. The numbers are the run's, rounded to two places.
-4. "I'm asking you to approve it on Friday" is your "decides on Friday" turned into the ask. I left Friday undated.
-5. Left out: the grid's reasoning on the pairings that do not separate the options (for example in-app help against the renewals), beyond their scores in the table.
-
-Assumptions, since I could not ask: a first-person memo from you alone, in Markdown, that names strategy-grid once and explains its scores in words for a reader who has not seen it. Nothing was rescored and no option or condition was added; every score and line of reasoning is looked up from the run file and its traces. The input files are unchanged.
+- I read this as a grid of problems to fix, not trends to ride, so the memo leads with how many facts each option changes (2, 1, 1) and gives the fit score second. Both put your pick first, so the ranking does not turn on this call.
+- Two sentences are my synthesis: "funding the fixes leaves the escalations to be handled another way", and "the one fact the set answers better than the fixes is the renewals" (worked out from which option scores highest on each fact).
+- The memo says the facts are "the ones I gave it" and calls the renewals "marked pivotal in the run". Reword if someone else set the run up.
+- Cut, in case you want them back: the grid's counter-arguments for the two alternatives (in-context help may be read where articles are not; four more agents still shorten the queue during a spike), and the four pairings the memo does not lean on.
+- Assumptions I made without asking: "Friday" stays undated, and this is a full-page memo, not an email or chat message. All quoted reasoning is from this run's own verdicts; every cell has one.

@@ -191,7 +191,10 @@ byte-identical rubric on the same payload, never a review of the cheap verdict.
 blind judges compared its output with plain Claude's on each of seven inputs.
 All three preferred the skill's on six and called the seventh a tie, mostly by
 slight margins. The judges scored it higher on inventing nothing and lower on
-form. The detail, including how earlier rounds fell short of blind, is in
+form. After a review of the hand-off from a run, two rules were tightened and
+re-tested on two grid runs, one built to reproduce the failures the review
+found; all three judges preferred the skill's on both. The detail, including
+how earlier rounds fell short of blind, is in
 [its README](skills/strategy-comms/README.md#what-has-been-measured).
 
 ## Known limits
@@ -225,7 +228,7 @@ skills/strategy-comms/             the write-up skill: SKILL.md, references,
                                    test inputs, examples, its own README
 ```
 
-The grid is four markdown files. strategy-comms adds about sixty-five, of which
+The grid is four markdown files. strategy-comms adds about seventy-five, of which
 Claude reads three (its SKILL.md and two reference files); the rest are its
 README, examples and test inputs. No dependencies, nothing to build, nothing
 to run.
