@@ -288,9 +288,9 @@ Two files, two purposes:
   runs/<slug>.json    one file per run: the computable matrix
 ```
 
-**traces.jsonl** — append every returned verdict, with its full
-`(condition, option)` inputs, tier, and the run's aggregates, one JSON object per
-line. The subagents are ephemeral; this is the durable labeled corpus the caller
+**traces.jsonl** — append every returned verdict as one JSON object per line,
+with `run` (the run's slug), the pairing's full `(condition, option)` inputs,
+the tier, and the run's aggregates. The subagents are ephemeral; this is the durable labeled corpus the caller
 owns.
 
 **runs/\<slug\>.json** — the matrix as a computable artifact, because prose
@@ -302,9 +302,11 @@ in the report, and write:
   "conditions": [ {name, what_is_true, pivotal} ],
   "options":    [ {name, we_will, how} ],
   "cells":      [ [ {push, grip, stake, confidence, tier} ] ],   // [i][j] = condition i × option j
-  "aggregates": { "S", "best_single",
-                  "options": [ {name, push, changes, depends_on} ],
-                  "unanswered": [...], "carriers": {...} } }
+  "aggregates": { "S", "band_10_90", "best_single",
+                  "options": [ {name, push, changes, depends_on: [condition names]} ],
+                  "unanswered": [...], "carriers": {...}, "passengers": [...],
+                  "pulling_apart": [ {condition, high, low} ],
+                  "concentrated": [...] } }
 ```
 
 This file is the plugin's output contract for composition. Treat its shape as
@@ -341,6 +343,11 @@ Recipes, all using this rubric as-is:
   run file with condition *i* deleted, for each *i* in turn. Report which
   conditions carry the ranking — if deleting one condition reorders the top,
   say so; that condition deserves the caller's scrutiny more than any score.
+- **Write-up** — no new judging either: hand the run file to `strategy-comms`,
+  which drafts the recommendation for whoever decides. It leads with the
+  caller's pick, states what the grid favours as judgment and not as fact,
+  takes the case against that pick from the run and its traces, and leaves a
+  marked blank for cost, which this grid never judged.
 
 One boundary: this rubric judges a directed fact → action relation. A chain
 step needing a *different* relation — e.g. symmetric affinity between items of

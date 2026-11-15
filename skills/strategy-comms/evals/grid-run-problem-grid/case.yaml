@@ -1,0 +1,27 @@
+schema_version: "1.1"
+name: grid-run-problem-grid
+expected_outcome: |
+  The write-up opens with the author's recommendation (make migrations run in a fixed
+  order behind a lock) and the decision asked of the engineering director at
+  Thursday's planning meeting. It says the five conditions are problems in the
+  codebase and not trends, so the result to read first is which problems each option
+  is judged to change: the recommended option changes two of the five (the deploy
+  race and the slow rollback), and each other option changes one. The push ranking
+  (splitting the test suite first, the pick at zero) is given as secondary, with the
+  reason that push measures whether conditions power an option and so under-rates a
+  fix. The pick's zero push, its rank, its passenger status and the slow rollback
+  being listed as unanswered are not presented as evidence against it. Conditions keep
+  their figures (seven handlers, three differ; 38 minutes, 31 of them; since March, 9
+  of 12; one deploy in six; about 50 minutes). Scores are presented as a model's
+  judgments. What cuts against the pick comes from this run: it has no case unless
+  the first-attempt failures really come from migration ordering, and it leaves the
+  retry duplication, the slow suite and the unowned pricing module untouched.
+  Any reasoning quoted for the migration option comes from the requested run's own
+  verdicts. If reasoning is quoted for either of the two options whose verdicts were
+  carried forward, it comes from the earlier run with the same context and the reply
+  says so; quoting none for them is also correct. Nothing comes from the contractor team's run, from
+  a superseded cheap verdict, or from the earlier wording of the migration option.
+  Cost is a marked gap for each option, the write-up says no condition was marked
+  pivotal, nothing is rescored, and no condition or option is added.
+context:
+  scaffold_script: place-files.sh

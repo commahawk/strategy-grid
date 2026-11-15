@@ -1,0 +1,7 @@
+---
+type: llm
+focus: trace
+weight: 1
+---
+
+The result matches this description: The note already leads with the recommendation, gives the evidence, the tradeoff and a dated ask, so the right result is to say so and change little or nothing. The saved version is about the same length as the original (not expanded into headers, bullets or a memo), keeps every figure, and any edit made is small and justified. Padding it out, restructuring it, or adding content it did not have counts as failure. 

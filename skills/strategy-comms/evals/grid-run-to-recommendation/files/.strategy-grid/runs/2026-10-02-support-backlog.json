@@ -1,0 +1,213 @@
+{
+  "slug": "2026-10-02-support-backlog",
+  "context": "Head of Support and VP Product are choosing one initiative to propose for Q2 funding. The COO decides.",
+  "conditions": [
+    {
+      "name": "tickets-concentrated",
+      "what_is_true": "62% of support tickets last quarter came from three workflows: invoice export, SSO setup and bulk import.",
+      "pivotal": false
+    },
+    {
+      "name": "enterprise-renewals",
+      "what_is_true": "Eleven enterprise accounts renew in Q2, and seven of them have open escalations older than 30 days.",
+      "pivotal": true
+    },
+    {
+      "name": "help-unread",
+      "what_is_true": "Fewer than 1 in 10 customers who filed a ticket opened a help article in the session before filing.",
+      "pivotal": false
+    },
+    {
+      "name": "release-spikes",
+      "what_is_true": "Ticket volume rises about 40% in the six weeks after each quarterly release.",
+      "pivotal": false
+    }
+  ],
+  "options": [
+    {
+      "name": "fix-top-workflows",
+      "we_will": "We will fix the three workflows that generate most tickets so that fewer tickets are filed.",
+      "how": "Two engineers for one quarter on invoice export, SSO setup and bulk import."
+    },
+    {
+      "name": "add-support-agents",
+      "we_will": "We will add four support agents so that tickets are answered faster.",
+      "how": "Four hires into the existing support team, trained on enterprise accounts first."
+    },
+    {
+      "name": "in-app-help",
+      "we_will": "We will put contextual help inside the three workflows so that customers solve problems without filing a ticket.",
+      "how": "Inline guidance and error explanations at the points where tickets are filed today."
+    }
+  ],
+  "cells": [
+    [
+      {
+        "push": 1.0,
+        "grip": 3,
+        "stake": 3,
+        "confidence": "high",
+        "tier": "pro"
+      },
+      {
+        "push": 0.0,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "medium",
+        "tier": "cheap"
+      },
+      {
+        "push": 0.75,
+        "grip": 2,
+        "stake": 3,
+        "confidence": "medium",
+        "tier": "pro"
+      }
+    ],
+    [
+      {
+        "push": 0.25,
+        "grip": 1,
+        "stake": 1,
+        "confidence": "medium",
+        "tier": "cheap"
+      },
+      {
+        "push": 0.75,
+        "grip": 2,
+        "stake": 2,
+        "confidence": "high",
+        "tier": "pro"
+      },
+      {
+        "push": -0.25,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "medium",
+        "tier": "cheap"
+      }
+    ],
+    [
+      {
+        "push": 0.0,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "high",
+        "tier": "pro"
+      },
+      {
+        "push": 0.0,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "medium",
+        "tier": "cheap"
+      },
+      {
+        "push": -0.75,
+        "grip": 1,
+        "stake": 2,
+        "confidence": "high",
+        "tier": "pro"
+      }
+    ],
+    [
+      {
+        "push": 0.5,
+        "grip": 2,
+        "stake": 1,
+        "confidence": "medium",
+        "tier": "pro"
+      },
+      {
+        "push": -0.5,
+        "grip": 0,
+        "stake": 1,
+        "confidence": "medium",
+        "tier": "pro"
+      },
+      {
+        "push": 0.25,
+        "grip": 1,
+        "stake": 0,
+        "confidence": "low",
+        "tier": "pro"
+      }
+    ]
+  ],
+  "aggregates": {
+    "S": 0.5325,
+    "band_10_90": [
+      0.47,
+      0.59
+    ],
+    "best_single": 0.3062,
+    "options": [
+      {
+        "name": "fix-top-workflows",
+        "push": 0.3062,
+        "changes": 2,
+        "depends_on": [
+          "tickets-concentrated"
+        ]
+      },
+      {
+        "name": "add-support-agents",
+        "push": -0.1062,
+        "changes": 1,
+        "depends_on": []
+      },
+      {
+        "name": "in-app-help",
+        "push": -0.225,
+        "changes": 1,
+        "depends_on": [
+          "tickets-concentrated"
+        ]
+      }
+    ],
+    "unanswered": [
+      "help-unread"
+    ],
+    "answered_r": {
+      "tickets-concentrated": 1.0,
+      "enterprise-renewals": 0.75,
+      "help-unread": 0.0,
+      "release-spikes": 0.5
+    },
+    "carriers": {
+      "tickets-concentrated": [
+        "fix-top-workflows"
+      ],
+      "enterprise-renewals": [
+        "add-support-agents"
+      ],
+      "help-unread": [],
+      "release-spikes": [
+        "fix-top-workflows"
+      ]
+    },
+    "passengers": [
+      "in-app-help"
+    ],
+    "pulling_apart": [
+      {
+        "condition": "release-spikes",
+        "high": [
+          "fix-top-workflows"
+        ],
+        "low": [
+          "add-support-agents"
+        ]
+      }
+    ],
+    "concentrated": [
+      "tickets-concentrated"
+    ],
+    "all_surf": false,
+    "pivotal": [
+      "enterprise-renewals"
+    ],
+    "residuals_mean": 0.09,
+    "residuals_n": 8
+  }
+}

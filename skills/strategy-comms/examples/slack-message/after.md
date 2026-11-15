@@ -1,0 +1,5 @@
+hey Marcus — I think we should move orchestration from Airflow to Dagster, and I'd like a yes or no from you before Q1 planning locks, which I think is Dec 5.
+
+what we've seen: 11 scheduler-related pages last quarter, and in the Dagster spike a few of us did last sprint, Jen got a pipeline that took her 2 days in Airflow running in like 3 hours (one pipeline, so a small sample). my read from the spike is that the asset-based model is way better for how we think about data and the local dev experience is night and day (I've been looking at Prefect too: [why Dagster over Prefect]).
+
+the cost would be around $60k/yr for Dagster+ at our usage, I think, plus probably a couple quarters to migrate all ~300 DAGs, which we could do incrementally since they can run side by side. against that, Airflow costs us nothing now except the infra and the time we spend babysitting it, which is a lot ([hours a week on Airflow upkeep]). still open: the platform team runs the Airflow infra and might have opinions ([where things stand with platform]).

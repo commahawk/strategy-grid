@@ -10,8 +10,8 @@
     {
       "name": "strategy-grid",
       "source": "./",
-      "description": "Judge candidate options against named conditions as an independent M×N grid, scored in your own blind subagents. Every pairing gets three relations — push, grip, stake — then the grid is read by rows to rank the options and by columns to score the set as a strategy. Works on a repo refactor question or a business plan; no server and no API key.",
-      "version": "0.1.0",
+      "description": "Judge candidate options against named conditions as an independent M×N grid, scored in your own blind subagents. Every pairing gets three relations — push, grip, stake — then the grid is read by rows to rank the options and by columns to score the set as a strategy. Works on a repo refactor question or a business plan; no server and no API key. Ships with strategy-comms, which writes a grid result up for whoever decides and reworks any draft so a senior reader can act on it.",
+      "version": "0.2.0",
       "author": {
         "name": "Matthew Bryan",
         "url": "https://github.com/commahawk"
@@ -27,7 +27,9 @@
         "rubric",
         "judge",
         "refactoring",
-        "planning"
+        "planning",
+        "writing",
+        "communication"
       ]
     }
   ]

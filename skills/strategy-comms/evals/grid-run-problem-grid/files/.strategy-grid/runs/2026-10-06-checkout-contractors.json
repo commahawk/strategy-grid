@@ -1,0 +1,243 @@
+{
+  "slug": "2026-10-06-checkout-contractors",
+  "context": "A two-person contractor team with no deploy access is choosing one task to take on for the checkout service. The vendor manager decides.",
+  "conditions": [
+    {
+      "name": "retry-duplication",
+      "what_is_true": "Retry logic is copy-pasted in seven handlers, and three of the copies differ in backoff.",
+      "pivotal": false
+    },
+    {
+      "name": "slow-ci",
+      "what_is_true": "The test suite takes 38 minutes, and 31 of those are integration tests that queue on one shared staging database.",
+      "pivotal": false
+    },
+    {
+      "name": "unowned-pricing",
+      "what_is_true": "The pricing module has had no code owner since March, and 9 of its last 12 changes were reverted or hot-fixed.",
+      "pivotal": false
+    },
+    {
+      "name": "deploy-race",
+      "what_is_true": "One deploy in six fails on the first attempt because of a migration-ordering race.",
+      "pivotal": false
+    },
+    {
+      "name": "slow-rollback",
+      "what_is_true": "A failed deploy takes about 50 minutes to roll back, because half-applied migrations are unwound by hand.",
+      "pivotal": false
+    }
+  ],
+  "options": [
+    {
+      "name": "extract-retry-lib",
+      "we_will": "We will extract retry into one shared library so that every handler backs off the same way.",
+      "how": "One engineer, replacing the seven copies behind a single interface."
+    },
+    {
+      "name": "split-test-suite",
+      "we_will": "We will split the integration tests onto per-branch databases so that the suite runs in parallel.",
+      "how": "A database per branch, created at the start of each run."
+    },
+    {
+      "name": "fix-migration-order",
+      "we_will": "We will make migrations run in a fixed order behind a lock so that deploys stop failing on the first attempt.",
+      "how": "A migration runner that takes a lock and applies migrations in sequence."
+    }
+  ],
+  "cells": [
+    [
+      {
+        "push": 0.5,
+        "grip": 3,
+        "stake": 3,
+        "confidence": "high",
+        "tier": "pro"
+      },
+      {
+        "push": 0.0,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "medium",
+        "tier": "cheap"
+      },
+      {
+        "push": 0.0,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "high",
+        "tier": "cheap"
+      }
+    ],
+    [
+      {
+        "push": -0.5,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "medium",
+        "tier": "pro"
+      },
+      {
+        "push": 0.75,
+        "grip": 3,
+        "stake": 3,
+        "confidence": "high",
+        "tier": "pro"
+      },
+      {
+        "push": 0.0,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "high",
+        "tier": "cheap"
+      }
+    ],
+    [
+      {
+        "push": -0.25,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "medium",
+        "tier": "cheap"
+      },
+      {
+        "push": 0.25,
+        "grip": 1,
+        "stake": 0,
+        "confidence": "medium",
+        "tier": "pro"
+      },
+      {
+        "push": 0.0,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "medium",
+        "tier": "cheap"
+      }
+    ],
+    [
+      {
+        "push": 0.0,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "high",
+        "tier": "cheap"
+      },
+      {
+        "push": 0.25,
+        "grip": 1,
+        "stake": 0,
+        "confidence": "low",
+        "tier": "pro"
+      },
+      {
+        "push": 0.0,
+        "grip": 3,
+        "stake": 3,
+        "confidence": "high",
+        "tier": "pro"
+      }
+    ],
+    [
+      {
+        "push": 0.0,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "high",
+        "tier": "cheap"
+      },
+      {
+        "push": 0.0,
+        "grip": 0,
+        "stake": 0,
+        "confidence": "medium",
+        "tier": "cheap"
+      },
+      {
+        "push": 0.0,
+        "grip": 2,
+        "stake": 1,
+        "confidence": "medium",
+        "tier": "pro"
+      }
+    ]
+  ],
+  "aggregates": {
+    "S": 0.245,
+    "band_10_90": [
+      0.19,
+      0.29
+    ],
+    "best_single": 0.175,
+    "options": [
+      {
+        "name": "extract-retry-lib",
+        "push": -0.185,
+        "changes": 1,
+        "depends_on": [
+          "retry-duplication"
+        ]
+      },
+      {
+        "name": "split-test-suite",
+        "push": 0.175,
+        "changes": 1,
+        "depends_on": [
+          "slow-ci"
+        ]
+      },
+      {
+        "name": "fix-migration-order",
+        "push": 0.0,
+        "changes": 2,
+        "depends_on": [
+          "deploy-race"
+        ]
+      }
+    ],
+    "unanswered": [
+      "slow-rollback"
+    ],
+    "answered_r": {
+      "retry-duplication": 0.5,
+      "slow-ci": 0.75,
+      "unowned-pricing": 0.25,
+      "deploy-race": 0.25,
+      "slow-rollback": 0.0
+    },
+    "carriers": {
+      "retry-duplication": [
+        "extract-retry-lib"
+      ],
+      "slow-ci": [
+        "split-test-suite"
+      ],
+      "unowned-pricing": [
+        "split-test-suite"
+      ],
+      "deploy-race": [
+        "split-test-suite"
+      ],
+      "slow-rollback": []
+    },
+    "passengers": [
+      "fix-migration-order"
+    ],
+    "pulling_apart": [
+      {
+        "condition": "slow-ci",
+        "high": [
+          "split-test-suite"
+        ],
+        "low": [
+          "extract-retry-lib"
+        ]
+      }
+    ],
+    "concentrated": [],
+    "all_surf": false,
+    "pivotal": [],
+    "residuals_n": 7,
+    "residuals_mean": 0.11
+  }
+}
