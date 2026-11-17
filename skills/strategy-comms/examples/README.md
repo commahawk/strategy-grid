@@ -3,8 +3,9 @@
 Each folder is one run from the last two test rounds (the record is in
 [the skill's README](../README.md#what-has-been-measured)), unedited apart
 from one thing: in `notes.md` a local file path is shortened to the file name.
-The two grid folders are from round 6, on the hand-off as it is now. The rest
-are from round 5.
+The two grid folders are from round 6, on the hand-off as it then stood. The
+rest are from round 5. The rules have changed since round 6 and have not been
+judged again, so a run made today will differ from these.
 
 - `before.md` is the draft.
 - `after.md` is what the skill saved.
