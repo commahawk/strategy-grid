@@ -1,0 +1,21 @@
+schema_version: "1.1"
+name: announcement-decision-buried
+expected_outcome: |
+  The subject line and the opening state the decision with its date (two releases a
+  week from January 12, on Tuesdays and Thursdays) and what readers have to do (each
+  team updates its release checklist for the new freeze times, Monday and Wednesday at
+  3pm, by January 8). Then come the reasons, with the measured figure first (38% of
+  last quarter's hotfixes were for changes that had waited more than four days) and
+  the pilot result kept with the author's own caveat (hotfixes from 11 to 4, two teams
+  and one month). What would change the decision is stated (a change failure rate
+  above 15% for two weeks in a row means a return to weekly releases), and so is what
+  it means for the Payments team (weekly until February, because of the processor
+  certification). The daily-release option and the plan to look at it again in Q2 are
+  kept in a sentence, or are listed for the author as cut. The thanks to the release
+  engineering team and to Priyanka is kept, or is listed for the author as cut. The
+  history of how the discussion started is cut or reduced to a clause. Nothing is
+  invented: no contact for questions, no new dates, no claim about what the pilot
+  proves. It still reads as an email to a large group, with no memo headings, and is
+  no longer than the original.
+context:
+  scaffold_script: place-files.sh

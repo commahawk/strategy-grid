@@ -66,8 +66,9 @@ Work out the storyline before touching slides.
 
 - **Main message:** one sentence the audience should leave with, including what is being asked of them.
 - **Executive summary:** a few sentences that make the whole argument and end with the ask. If the meeting were cut to two minutes, this slide would be enough.
-- **Body:** one message per slide. The title is a full sentence stating the takeaway, short enough to fit on two lines. The slide body is the evidence that proves it, not the title said again.
+- **Body:** one message per slide. The title is a full sentence stating the takeaway, short enough to fit on two lines. The slide body is the evidence that proves it, not the title said again. A slide with nothing left to show once its title states the takeaway (no chart, table or further fact) gives its fact to a neighbour as evidence, or moves to the appendix if the argument does not need it.
 - **The ask:** its own slide, with the options side by side (what each costs and what each does), the author's recommendation, and the date the decision is needed. An outline is a working document, so mark each of these the draft lacks with a placeholder.
+- **What a yes sets in motion:** the first actions the decision starts, each with its owner and date as far as the draft gives them, and who has been consulted and where they stand. The actions on a "Next Steps" slide that depend on the decision go here, under a title that states the first of them. A step that happens whatever is decided moves under the takeaway it supports, or is cut and listed. When the draft names no action a yes would start and no one consulted, leave this part out and raise both in your notes. Use a placeholder only where the audience would ask before deciding.
 - **Appendix:** reference tables, methodology, dashboards, anything that answers a likely question but does not carry the argument.
 
 Test: read only the titles, in order. They should make the case on their own.
