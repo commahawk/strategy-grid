@@ -26,16 +26,18 @@ drafts the recommendation from the run and its traces and rescores nothing:
 - **Conditions are your facts. Scores are a model's judgment.** Your wording
   and figures go in unchanged. Every score is attributed to the grid and never
   stated as a finding.
-- **The case against comes from the run.** The worst pairing for your pick,
-  the conditions it has no case without, any pivotal condition another option
-  answers better, and whatever the set leaves unanswered. The reasoning is
+- **The case against comes from the run.** The conditions your pick has no
+  case without, any pivotal condition another option answers better, any
+  condition that fights it, and any condition the set leaves unanswered that
+  your pick does not change. The reasoning is
   taken from that run's own verdicts in `traces.jsonl`, never from another
   run that happens to have the same scores.
 - **It says which kind of grid it is.** When the conditions are problems to
   fix, as in a codebase, it leads with which problems each option is judged to
-  change and gives the push ranking second, because push under-rates a fix. A
-  remedy's zero push or passenger status is not held against it. A negative
-  push still is.
+  change and gives the push ranking second, in a passage of its own, because
+  push measures whether the conditions favour an option and not whether the
+  option fixes them. A remedy's zero push, and the passenger status that zero
+  gives it, are not held against it. A negative push still is.
 - **Cost is a marked blank.** The grid never judges cost, so each option gets
   a cost placeholder and no number is made up.
 
@@ -103,8 +105,9 @@ Plain Claude's version of the same message is in
 [`examples/slack-message/plain-claude.md`](examples/slack-message/plain-claude.md).
 It is better organized and could be sent as it stands. It also adds a decision
 date, a delivery date and a five-item promise the author never made. That is
-the trade this skill makes, and [`examples/`](examples/) has all eight runs
-from the last two test rounds so you can judge it yourself.
+the trade this skill makes. [`examples/`](examples/) has one run for each of
+the eight inputs judged in the last two test rounds, three of them with plain
+Claude's version beside it, so you can judge it yourself.
 
 ## The CLAUDE.md block
 
@@ -125,7 +128,7 @@ on both.
 |---|---|---|---|
 | 1 to 4 | four drafts in rounds 1 to 3, two new ones in round 4 | one judge, not fully blind | won 13 of 14 |
 | 5 | six drafts and one grid run | three judges, blind | preferred on 6, tied on 1 |
-| 6, the hand-off as it is now | two grid runs, one of them new | three judges, blind | preferred on both |
+| 6, the hand-off as it then stood | two grid runs, one of them new | three judges, blind | preferred on both |
 
 **Rounds 5 and 6 are the ones to trust, and round 5's margins are small.** Each
 comparison went to three separate Claude instances, which read the two responses under
@@ -135,16 +138,42 @@ three ties were the note that needed no changes, which both sides returned
 untouched. Fourteen of the 18 margins were "slight". The four "clear" ones were
 the grid write-up (all three judges) and the deck outline (one of three).
 
-**Round 6 followed a review of this change.** The review found that a
+**Every "clear" margin is on an input the skill had been worked on.** The nine
+"clear" judgments (four in round 5, five in round 6) are on the deck outline,
+which the skill was revised against, and on the two grid inputs: the skill was
+fixed against the first, and the second was built to reproduce two failures a
+review had found. On the two drafts the skill was never revised against, the
+PR description and the incident summary, all six judgments preferred it and
+all six were "slight". Those six are the fresh evidence.
+
+**Round 6 followed a review of the hand-off from a run.** The review found that a
 write-up could take a remedy's zero push for a mark against it, and could
 quote reasoning from another run that had the same scores. Both rules were
 tightened, and a new input was built to reproduce both failures: a codebase
 grid in a refine loop, with a later run for a different operator in its
 traces. On it, in two separate runs, the skill's memo contained nothing
 from the later run, from a superseded verdict or from the option's earlier
-wording. Plain Claude's memo brought in the earlier wording. Five of round 6's six
-preferences were "clear". The six questions have not changed since round 5, so
-the six drafts were not re-run.
+wording. Plain Claude's memo brought in the earlier wording. That is the second
+failure. On the first, the saved memo is only partly right: it leads with the
+problems each option was judged to change and says why the push ranking is
+secondary, but it still calls that ranking the strongest point against the
+pick (limit 5 below). Five of round 6's six preferences were "clear". The six
+questions have not changed since round 5, so the six drafts were not re-run.
+
+**Changed since round 6, and not judged.** A second review led to four
+changes. The detail of the hand-off from a run moved to
+`references/grid-run.md`, and four rules stay in SKILL.md. There the push
+ranking gets a passage of its own outside what cuts against the pick,
+passenger status is excused only for a remedy that push scored at zero, scores
+stay out of the prose where the comparison carries them, the memo is held to a
+page, and the set score is left out when the reader is choosing one option.
+Step 3 of "How to work" now groups the body of a prose draft that makes a case
+by what each fact supports, and cuts a blow-by-blow account down to what it
+shows. A scoped request such as "shorten this" now comes back as the text
+alone, with no placeholders, template or verdict. The deck shape gained what a
+yes sets in motion and who has been consulted. The six questions are
+unchanged. None of this has been through a judged round, and every saved
+example predates it.
 
 **It wins on fidelity and gives up some form.** Across round 5's 21 judgments the
 skill averaged 4.4 out of 5 on fidelity against 3.0 for plain Claude, and 3.7
@@ -180,6 +209,11 @@ The judges are models, and eight inputs is a small sample. The inputs are in
 this repository, and of plain Claude's outputs only three are, kept in
 `examples/` for comparison.
 
+`evals/` also holds four inputs added after round 6, for paths no round has
+covered: a scoped "shorten this" request, a critique with no rewrite, a prose
+decision memo, and an announcement of a decision. They have not been judged
+either. A document longer than a page still has no test input.
+
 ## Known limits
 
 1. **It is better at openings than at bodies.** It reliably moves the main
@@ -199,6 +233,10 @@ this repository, and of plain Claude's outputs only three are, kept in
    against the pick.** It goes on to say why that ranking under-rates a fix,
    but a reader who stops at the opening takes the rank as the main objection.
 
+Limits 1, 3 and 5 describe the saved examples. Rules aimed at each were added
+after round 6 and have not been judged (see above), so treat all three as
+standing.
+
 ## Where the six questions come from
 
 They started as a study of one large company's communication culture, drawn
@@ -216,10 +254,11 @@ and what could not be opened.
 
 ```
 SKILL.md                 the two overriding rules, the six questions,
-                         and the hand-off from a run file
+                         and the four rules for a run file
 references/shapes.md     skeletons by content type
+references/grid-run.md   the detail of the hand-off from a run file
 references/evidence.md   sources and their limits
 claude-md-block.md       the optional always-on block
-evals/                   eight fictional test inputs
-examples/                the eight runs from the last two test rounds
+evals/                   twelve fictional test inputs, eight of them judged
+examples/                one run for each of the eight judged inputs
 ```

@@ -1,0 +1,21 @@
+schema_version: "1.1"
+name: critique-only-no-rewrite
+expected_outcome: |
+  The reply is a critique and nothing else: it contains no rewritten version of the
+  email and no file is saved. Its first two problems are these, in either order. One:
+  the benefit claim ("this would basically close the gap") rests on what other
+  companies saw, while the draft's own caveat says most of the overdue balance sits
+  with 15 customers on negotiated terms whom reminders may not move. Two: the ask is
+  not specific ("support", no total amount, no date). It gives at most five problems
+  in all, most damaging first, the rest drawn mainly from these: opinions are stated as fact
+  with nothing behind them ("everyone agrees", "constantly"); the cost is incomplete
+  (the implementation fee has no figure and the IT work is unscoped); the three vendors
+  and the option of changing nothing are not compared. Each problem quotes the
+  passage, says what it does to the reader and says what to do instead, in plain words
+  and not by question number. It ends with the questions the CFO will ask that the
+  draft cannot answer. It supplies no figure of its own beyond arithmetic on the
+  draft's numbers (such as the 13 days between 58 and 45), and no cause or
+  recommendation. The 58 days, 45 days, $84K, 10 weeks and 10 to 15 days are given as
+  the draft gives them.
+context:
+  scaffold_script: place-files.sh

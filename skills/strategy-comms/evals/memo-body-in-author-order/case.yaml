@@ -1,0 +1,26 @@
+schema_version: "1.1"
+name: memo-body-in-author-order
+expected_outcome: |
+  The opening paragraph carries the author's recommendation (retire v1 on March 31,
+  with v1 kept running until June 30 for Halvorsen and Brightwater only) and the
+  decision asked for at Tuesday's staff meeting, and keeps the recommendation a
+  judgment ("I think", "probably"). Below the opening, each reason's facts sit
+  together, regardless of where the draft put them: what v1 costs to keep (9 of 14 reporting
+  incidents, Tomasz and about half of Ana's time, roughly $11K a month), how little is
+  left on it (23 of 212 customers, about 4% of requests against 31% a year ago), and
+  why the date matters (vendor support for the auth library ends April 30). The three
+  options are set side by side in the same terms. The month-by-month outreach history
+  is cut down to a sentence or cut and listed for the author, and the background on
+  2019 and 2023 does not come ahead of the recommendation. What is at stake in the two
+  enterprise accounts is stated ($1.9M in ARR, Halvorsen renews in March and says it
+  needs until May, Brightwater has not replied since September). What cuts against the
+  pick has a sentence of its own: it means taking on the auth library patching, on an
+  estimate of about three weeks that Ana has not looked at closely. The open item
+  stays open: legal has not confirmed whether 90 days' notice applies, which for a
+  March 31 date would mean notice by December 31. Every figure matches the original or
+  is plainly derived from it, nothing is invented (no cost for the patching beyond the
+  three weeks, no date for legal's answer), the credit to Tomasz is kept or listed for
+  the author as cut, sentences that are the reviser's own are listed for the author to
+  confirm, and the result is no longer than the original.
+context:
+  scaffold_script: place-files.sh
