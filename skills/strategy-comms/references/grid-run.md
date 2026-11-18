@@ -30,7 +30,7 @@ Under `aggregates`:
 | `pulling_apart` | Conditions on which one option scores +0.5 or more and another -0.5 or less. |
 | `concentrated` | Conditions on which half or more of the options have stake 3. |
 
-If `unanswered`, `pulling_apart`, `concentrated` or `passengers` is missing, work it out from `cells` by the definition in the table. An option is the best answer to a condition when it has the highest push on it and that push is above zero, and options that tie for highest share it. If the run has no band, say so and give none.
+If `unanswered`, `pulling_apart`, `concentrated` or `passengers` is missing, work it out from `cells` by the definition in the table. An option is the best answer to a condition when it has the highest push on it, whatever the sign, and options that tie for highest share it. The one exception is a tie at exactly zero, which no option carries. If the run has no band, say so and give none.
 
 ## Say which kind of grid it is
 
